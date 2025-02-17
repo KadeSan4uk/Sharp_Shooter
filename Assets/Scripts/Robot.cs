@@ -16,7 +16,7 @@ public class Robot : MonoBehaviour
     {
         player = FindFirstObjectByType<FirstPersonController>();
     }
-
+    
     private void Update()
     {
         agent.SetDestination(player.transform.position);
