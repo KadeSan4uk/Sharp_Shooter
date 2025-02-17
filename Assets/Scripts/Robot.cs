@@ -1,16 +1,24 @@
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Robot : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    FirstPersonController player;
+    NavMeshAgent agent;
+
+    private void Awake()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        player = FindFirstObjectByType<FirstPersonController>();
+    }
+
+    private void Update()
+    {
+        agent.SetDestination(player.transform.position);
     }
 }
