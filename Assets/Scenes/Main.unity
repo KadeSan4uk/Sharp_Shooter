@@ -1509,57 +1509,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
-    - target: {fileID: 3241212001271243744, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: f9006558011bd3f47869438cbb266be3, type: 2}
-    - target: {fileID: 3834212314191929659, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834212314191929659, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834212314191929659, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834212314191929659, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834212314191929659, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5470885327582201867, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 5470885327582201867, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 5470885327582201867, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 5470885327582201867, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.194
-      objectReference: {fileID: 0}
-    - target: {fileID: 5470885327582201867, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.78
-      objectReference: {fileID: 0}
     - target: {fileID: 8388294760638578285, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.926371
       objectReference: {fileID: 0}
     - target: {fileID: 8388294760638578285, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0517002
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8388294760638578285, guid: 0d169c62e667dbe43b717d19db8e4b7c, type: 3}
       propertyPath: m_LocalPosition.z
