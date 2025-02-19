@@ -30,6 +30,11 @@ public class ActiveWeapon : MonoBehaviour
         HandleShoot();
     }
 
+    public void SwitchWeapon(WeaponSO weaponSO)
+    {
+        Debug.Log("PLayer picked up " + weaponSO.name);
+    }
+
     void HandleShoot()
     {
         if (!starterAssetsInputs.shoot) return;
