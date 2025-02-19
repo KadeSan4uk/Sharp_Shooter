@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1903664578071300406, guid: 4e0260af4c99641408d5e7763ef4f2db, type: 3}
       propertyPath: m_Name
-      value: Base Weapon Pickup
+      value: Pistol Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 2011898928021516184, guid: 4e0260af4c99641408d5e7763ef4f2db, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: b52d1ac55ff64804088fdaecac099a98, type: 2}
     - target: {fileID: 8291887416745480515, guid: 4e0260af4c99641408d5e7763ef4f2db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
