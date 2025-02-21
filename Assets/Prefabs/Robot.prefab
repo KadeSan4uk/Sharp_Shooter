@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  robotExplosionVFX: {fileID: 526489563412175064, guid: 14d4a77cf18f2154db258a05df4908ea, type: 3}
 --- !u!195 &5398250383475387248
 NavMeshAgent:
   m_ObjectHideFlags: 0
