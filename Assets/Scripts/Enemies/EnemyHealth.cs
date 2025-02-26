@@ -8,9 +8,17 @@ public class EnemyHealth : MonoBehaviour
 
     int currentHealth;
 
+    GameManager gameManager;
+
     private void Awake()
     {
         currentHealth = health;
+    }
+
+    private void Start()
+    {
+        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager.AdjustEnemiesLeft(1);
     }
 
     public void TakeDamage(int damage)
@@ -26,6 +34,7 @@ public class EnemyHealth : MonoBehaviour
     public void SelfDestruct()
     {
         Instantiate(robotExplosionVFX, transform.position, Quaternion.identity);
+        gameManager.AdjustEnemiesLeft(-1);
         Destroy(this.gameObject);
     }
 }
