@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4197210766488078569}
   - component: {fileID: 2654870009880380170}
-  - component: {fileID: 8564441152283504424}
   - component: {fileID: 2208206343269553525}
   m_Layer: 3
   m_Name: Weapon Camera
@@ -66,7 +65,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 500
   field of view: 40
   orthographic: 0
   orthographic size: 5
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8564441152283504424
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436371849829695434}
-  m_Enabled: 1
 --- !u!114 &2208206343269553525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2783488231652717911}
+  - component: {fileID: 7693989097973623380}
   - component: {fileID: 8066446928307628031}
   - component: {fileID: 8083535366930081417}
   - component: {fileID: 1876131205951256837}
@@ -285,6 +277,33 @@ Transform:
   - {fileID: 4982615037110720890}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &7693989097973623380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3038276518897261261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d12f547b80cc042bb45a6e53d7a8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  deathVirtualCamera: {fileID: 0}
+  weaponCamera: {fileID: 4197210766488078569}
+  shieldBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameOverContainer: {fileID: 0}
 --- !u!143 &8066446928307628031
 CharacterController:
   m_ObjectHideFlags: 0
@@ -522,6 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingWeapon: {fileID: 11400000, guid: b52d1ac55ff64804088fdaecac099a98, type: 2}
   playerFollowCamera: {fileID: 0}
+  weaponCamera: {fileID: 2654870009880380170}
   zoomVignette: {fileID: 0}
   ammoText: {fileID: 0}
 --- !u!95 &212227069126515345
