@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+        PlayerHealth playerHealth = other.transform.parent.GetComponent<PlayerHealth>();
         playerHealth?.TakeDamage(damage);
         Instantiate(projectileHitVFX, transform.position, Quaternion.identity);
 

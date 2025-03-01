@@ -59,6 +59,15 @@ public class ActiveWeapon : MonoBehaviour
 
     public void SwitchWeapon(WeaponSO weaponSO)
     {
+        if (starterAssetsInputs.zoom)
+        {
+            playerFollowCamera.m_Lens.FieldOfView = defaultFOV;
+            weaponCamera.fieldOfView = defaultFOV;
+
+            zoomVignette.SetActive(false);
+            firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
+        }
+
         if (currentWeapon)
         {
             Destroy(currentWeapon.gameObject);
