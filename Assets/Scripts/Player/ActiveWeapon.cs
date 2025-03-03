@@ -29,6 +29,8 @@ public class ActiveWeapon : MonoBehaviour
     float defaultRotationSpeed;
     int currentAmmo;
     bool isSniperRifle;
+    float defaultMoveSpeed;
+    float defaultSprintSpeed;
 
     private void Awake()
     {
@@ -43,6 +45,8 @@ public class ActiveWeapon : MonoBehaviour
     {
         SwitchWeapon(startingWeapon);
         AdjustAmmo(currentWeaponSO.MagazineSize);
+        defaultMoveSpeed = firstPersonController.MoveSpeed;
+        defaultSprintSpeed = firstPersonController.SprintSpeed;
     }
 
     void Update()
@@ -130,6 +134,8 @@ public class ActiveWeapon : MonoBehaviour
             playerFollowCamera.m_Lens.FieldOfView = currentWeaponSO.ZoomAmount;
             weaponCamera.fieldOfView = currentWeaponSO.ZoomAmount;
 
+            firstPersonController.ChangeMoveSpeedOnZoom();
+
             zoomVignette.SetActive(true);
             currentWeaponSO.OnZoom = true;
             firstPersonController.ChangeRotationSpeed(currentWeaponSO.ZoomRotationSpeed);
@@ -139,9 +145,17 @@ public class ActiveWeapon : MonoBehaviour
             playerFollowCamera.m_Lens.FieldOfView = defaultFOV;
             weaponCamera.fieldOfView = defaultFOV;
 
+            DefaultMoveSpeed();
+
             zoomVignette.SetActive(false);
             currentWeaponSO.OnZoom = false;
             firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
         }
+    }
+
+    void DefaultMoveSpeed()
+    {
+        firstPersonController.MoveSpeed = defaultMoveSpeed;
+        firstPersonController.SprintSpeed = defaultSprintSpeed;
     }
 }
