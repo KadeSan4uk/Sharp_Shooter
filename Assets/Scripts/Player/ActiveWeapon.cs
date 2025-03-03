@@ -10,6 +10,7 @@ public class ActiveWeapon : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera playerFollowCamera;
     [SerializeField] Camera weaponCamera;
     [SerializeField] GameObject zoomVignette;
+    [SerializeField] GameObject crosshair;
     [SerializeField] TMP_Text ammoText;
 
     WeaponSO currentWeaponSO;
@@ -131,6 +132,7 @@ public class ActiveWeapon : MonoBehaviour
         if (!currentWeaponSO.CanZoom) return;
         if (starterAssetsInputs.zoom)
         {
+            crosshair.SetActive(false);
             playerFollowCamera.m_Lens.FieldOfView = currentWeaponSO.ZoomAmount;
             weaponCamera.fieldOfView = currentWeaponSO.ZoomAmount;
 
@@ -142,6 +144,8 @@ public class ActiveWeapon : MonoBehaviour
         }
         else
         {
+            crosshair.SetActive(true);
+
             playerFollowCamera.m_Lens.FieldOfView = defaultFOV;
             weaponCamera.fieldOfView = defaultFOV;
 
