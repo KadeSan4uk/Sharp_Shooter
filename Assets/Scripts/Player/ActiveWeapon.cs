@@ -19,12 +19,16 @@ public class ActiveWeapon : MonoBehaviour
     Animator animator;
 
 
-    const string SHOOT_STRING = "Shoot";
+    const string SHOOT_STRING_PISTOL = "Pistol";
+    const string SHOOT_STRING_MASHINE_GUN = "MachineGun";
+    const string SHOOT_STRING_SNIPER_RIFLE = "SniperRifle";
+
 
     float timeSinceLastShot = 0f;
     float defaultFOV;
     float defaultRotationSpeed;
     int currentAmmo;
+    bool isSniperRifle;
 
     private void Awake()
     {
@@ -65,6 +69,7 @@ public class ActiveWeapon : MonoBehaviour
             weaponCamera.fieldOfView = defaultFOV;
 
             zoomVignette.SetActive(false);
+            currentWeaponSO.OnZoom = false;
             firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
         }
 
@@ -81,14 +86,16 @@ public class ActiveWeapon : MonoBehaviour
 
     void HandleShoot()
     {
+        isSniperRifle = currentWeaponSO.IsSniperRifle;
+
         timeSinceLastShot += Time.deltaTime;
 
         if (!starterAssetsInputs.shoot) return;
 
         if (timeSinceLastShot >= currentWeaponSO.FireRate && currentAmmo > 0)
         {
-            currentWeapon.Shoot(currentWeaponSO);
-            animator.Play(SHOOT_STRING, 0, 0f);
+            currentWeapon.Shoot(currentWeaponSO, isSniperRifle);
+            SwitchAnimationShoot(currentWeaponSO);
             timeSinceLastShot = 0;
             AdjustAmmo(-1);
         }
@@ -99,6 +106,22 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
+    void SwitchAnimationShoot(WeaponSO weapon)
+    {
+        if (weapon.IsSniperRifle)
+        {
+            animator.Play(SHOOT_STRING_SNIPER_RIFLE, 0, 0f);
+        }
+        else if (weapon.IsMashineGun)
+        {
+            animator.Play(SHOOT_STRING_MASHINE_GUN, 0, 0f);
+        }
+        else
+        {
+            animator.Play(SHOOT_STRING_PISTOL, 0, 0f);
+        }
+    }
+
     void HandleZoom()
     {
         if (!currentWeaponSO.CanZoom) return;
@@ -106,7 +129,9 @@ public class ActiveWeapon : MonoBehaviour
         {
             playerFollowCamera.m_Lens.FieldOfView = currentWeaponSO.ZoomAmount;
             weaponCamera.fieldOfView = currentWeaponSO.ZoomAmount;
+
             zoomVignette.SetActive(true);
+            currentWeaponSO.OnZoom = true;
             firstPersonController.ChangeRotationSpeed(currentWeaponSO.ZoomRotationSpeed);
         }
         else
@@ -115,6 +140,7 @@ public class ActiveWeapon : MonoBehaviour
             weaponCamera.fieldOfView = defaultFOV;
 
             zoomVignette.SetActive(false);
+            currentWeaponSO.OnZoom = false;
             firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
         }
     }

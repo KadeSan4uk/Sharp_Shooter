@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robotExplosionVFX: {fileID: 526489563412175064, guid: 14d4a77cf18f2154db258a05df4908ea, type: 3}
-  health: 3
+  health: 10
 --- !u!114 &2827916308394662162
 MonoBehaviour:
   m_ObjectHideFlags: 0
