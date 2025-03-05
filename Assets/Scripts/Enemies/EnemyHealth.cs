@@ -35,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
     {
         Instantiate(robotExplosionVFX, transform.position, Quaternion.identity);
         gameManager.AdjustEnemiesLeft(-1);
+        gameManager.AdjustEnemiesKilled(1);
         Destroy(this.gameObject);
     }
 }

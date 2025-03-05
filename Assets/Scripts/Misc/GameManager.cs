@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TMP_Text enemiesLeftText;
-    [SerializeField] GameObject youWinText;
+    [SerializeField] GameObject youWinText;    
+    [SerializeField] TMP_Text enemiesKilledText;
 
     int enemiesLeft = 0;
+    int enemiesKilled = 0;
 
     const string ENEMIES_LEFT_STRING = "Enemies left: ";
+    const string ENEMIRS_KILLED = "Enemies killed: ";
 
     public void AdjustEnemiesLeft(int amount)
     {
@@ -21,6 +24,12 @@ public class GameManager : MonoBehaviour
         {
             youWinText.SetActive(true);
         }
+    }
+
+    public void AdjustEnemiesKilled(int amount)
+    {
+        enemiesKilled += amount;
+        enemiesKilledText.text = ENEMIRS_KILLED + enemiesKilled.ToString(); 
     }
 
     public void RestartButton()
