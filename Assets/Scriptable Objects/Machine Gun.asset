@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Machine Gun
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 3082919281433135832, guid: 60f3d0d757a05bb44be50f390cbfa4d2, type: 3}
+  ShootEffect: {fileID: 8300000, guid: fc8f3f892f4b09d48859a5cedd86feb0, type: 3}
   IsPistol: 0
   IsMashineGun: 1
   IsSniperRifle: 0
@@ -21,6 +22,7 @@ MonoBehaviour:
   HitVFXPrefab: {fileID: 3720116267844989970, guid: 04f0f45110e4ea8419da14af33def3a0, type: 3}
   IsAutomatic: 1
   CanZoom: 0
+  OnZoom: 0
   ZoomAmount: 10
   ZoomRotationSpeed: 0.3
   MagazineSize: 48

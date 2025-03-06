@@ -18,6 +18,7 @@ public class ActiveWeapon : MonoBehaviour
     FirstPersonController firstPersonController;
     Weapon currentWeapon;
     Animator animator;
+    AudioManager audioManager;
 
 
     const string SHOOT_STRING_PISTOL = "Pistol";
@@ -30,6 +31,7 @@ public class ActiveWeapon : MonoBehaviour
     float defaultRotationSpeed;
     int currentAmmo;
     bool isSniperRifle;
+    bool wasZoomed = false;
     float defaultMoveSpeed;
     float defaultSprintSpeed;
 
@@ -44,6 +46,7 @@ public class ActiveWeapon : MonoBehaviour
 
     private void Start()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
         SwitchWeapon(startingWeapon);
         AdjustAmmo(currentWeaponSO.MagazineSize);
         defaultMoveSpeed = firstPersonController.MoveSpeed;
@@ -54,6 +57,7 @@ public class ActiveWeapon : MonoBehaviour
     {
         HandleShoot();
         HandleZoom();
+        PlayZoomFX();
     }
 
     public void AdjustAmmo(int amount)
@@ -133,6 +137,7 @@ public class ActiveWeapon : MonoBehaviour
         if (starterAssetsInputs.zoom)
         {
             crosshair.SetActive(false);
+
             playerFollowCamera.m_Lens.FieldOfView = currentWeaponSO.ZoomAmount;
             weaponCamera.fieldOfView = currentWeaponSO.ZoomAmount;
 
@@ -155,6 +160,19 @@ public class ActiveWeapon : MonoBehaviour
             currentWeaponSO.OnZoom = false;
             firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
         }
+    }
+
+    void PlayZoomFX()
+    {
+        if (currentWeaponSO.OnZoom && !wasZoomed)
+        {
+            audioManager.ZoomOn(1f);
+        }
+        else if (!currentWeaponSO.OnZoom && wasZoomed)
+        {
+            audioManager.ZoomOff(1f);
+        }
+        wasZoomed = currentWeaponSO.OnZoom;
     }
 
     void DefaultMoveSpeed()

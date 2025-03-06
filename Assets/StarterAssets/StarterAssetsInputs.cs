@@ -50,10 +50,12 @@ namespace StarterAssets
         {
             SprintInput(value.isPressed);
         }
+
         public void OnShoot(InputValue value)
         {
             ShootInput(value.isPressed);
         }
+
         public void OnZoom(InputValue value)
         {
             ZoomInput(value.isPressed);
@@ -85,6 +87,7 @@ namespace StarterAssets
         {
             shoot = newShootState;
         }
+
         public void ZoomInput(bool newZoomState)
         {
             zoom = newZoomState;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 7601017716621738490, guid: 1b5390c834576d24199eb52e67b3f13a, type: 3}
+  ShootEffect: {fileID: 8300000, guid: 599ed668d8ed8bb4d86d44fd810252a7, type: 3}
   IsPistol: 1
   IsMashineGun: 0
   IsSniperRifle: 0
@@ -21,6 +22,7 @@ MonoBehaviour:
   HitVFXPrefab: {fileID: 3720116267844989970, guid: 04f0f45110e4ea8419da14af33def3a0, type: 3}
   IsAutomatic: 0
   CanZoom: 0
+  OnZoom: 0
   ZoomAmount: 10
   ZoomRotationSpeed: 0.3
   MagazineSize: 12

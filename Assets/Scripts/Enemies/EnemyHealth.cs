@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     int currentHealth;
 
     GameManager gameManager;
+    AudioManager audioManager;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
         gameManager.AdjustEnemiesLeft(1);
     }
 
@@ -33,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void SelfDestruct()
     {
+        audioManager.DeathRobot(0.4f);
         Instantiate(robotExplosionVFX, transform.position, Quaternion.identity);
         gameManager.AdjustEnemiesLeft(-1);
         gameManager.AdjustEnemiesKilled(1);
