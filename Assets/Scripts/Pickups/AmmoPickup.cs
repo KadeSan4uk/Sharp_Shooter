@@ -14,6 +14,6 @@ public class AmmoPickup : Pickup
     protected override void OnPickup(ActiveWeapon activeWeapon)
     {
         activeWeapon.AdjustAmmo(ammoAmount);
-        audioManager.AmmoTake(0.5f);
+        audioManager.PlaySound("ammoTake");
     }
 }

@@ -1,5 +1,6 @@
 using Cinemachine;
 using StarterAssets;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -104,7 +105,9 @@ public class ActiveWeapon : MonoBehaviour
         if (timeSinceLastShot >= currentWeaponSO.FireRate && currentAmmo > 0)
         {
             currentWeapon.Shoot(currentWeaponSO, isSniperRifle);
-            SwitchAnimationShoot(currentWeaponSO);
+            SwitchAnimationWeapon(currentWeaponSO);
+            WeaponSound(currentWeaponSO);
+            StartCoroutine(PlayBulletDroppedRoutine());
             timeSinceLastShot = 0;
             AdjustAmmo(-1);
         }
@@ -115,7 +118,7 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
-    void SwitchAnimationShoot(WeaponSO weapon)
+    void SwitchAnimationWeapon(WeaponSO weapon)
     {
         if (weapon.IsSniperRifle)
         {
@@ -129,6 +132,29 @@ public class ActiveWeapon : MonoBehaviour
         {
             animator.Play(SHOOT_STRING_PISTOL, 0, 0f);
         }
+    }
+
+    void WeaponSound(WeaponSO weapon)
+    {
+        if (weapon.IsSniperRifle)
+        {
+            audioManager.PlaySound("SniperRifleShoot", 0.5f);
+        }
+        else if (weapon.IsMashineGun)
+        {
+            audioManager.PlaySound("MachineGun");
+        }
+        else
+        {
+            audioManager.PlaySound("MachineGun");
+        }
+
+    }
+
+    IEnumerator PlayBulletDroppedRoutine()
+    {
+        yield return new WaitForSeconds(0.3f);
+        audioManager.PlaySound("bulletDropped", 1.5f);
     }
 
     void HandleZoom()
@@ -166,11 +192,11 @@ public class ActiveWeapon : MonoBehaviour
     {
         if (currentWeaponSO.OnZoom && !wasZoomed)
         {
-            audioManager.ZoomOn(1f);
+            audioManager.PlaySound("ZoomOn");
         }
         else if (!currentWeaponSO.OnZoom && wasZoomed)
         {
-            audioManager.ZoomOff(1f);
+            audioManager.PlaySound("ZoomOff");
         }
         wasZoomed = currentWeaponSO.OnZoom;
     }

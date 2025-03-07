@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void SelfDestruct()
     {
-        audioManager.DeathRobot(0.4f);
+        audioManager.PlaySound("DeathRobot",0.2f);
         Instantiate(robotExplosionVFX, transform.position, Quaternion.identity);
         gameManager.AdjustEnemiesLeft(-1);
         gameManager.AdjustEnemiesKilled(1);

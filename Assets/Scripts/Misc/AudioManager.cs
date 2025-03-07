@@ -1,64 +1,33 @@
-using StarterAssets;
-using System.Net;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip playerSteps;
-    public AudioClip playerTakeHit;
-    public AudioClip enemySteps;
-    public AudioClip enemyTakeHit;
-    public AudioClip deathRobot;
-    public AudioClip energyGate;
-    public AudioClip ammoTake;
-    public AudioClip shieldTake;
-    public AudioClip pistol;
-    public AudioClip machineGunStart;
-    public AudioClip machineGunEnd;
-    public AudioClip sniperRifle;
-    public AudioClip sniperRifleZoom;
-    public AudioClip bulletDropped;
-    public AudioClip turretHit;
-    public AudioClip zoomOn;
-    public AudioClip zoomOff;
+    public AudioSource audioSource;    
+    public List<AudioClip> audioClips;
+    private Dictionary<string, AudioClip> audioDictionary;
 
-
-    public void PlayerSteps(float volume)
+    private void Awake()
     {
-        PlayAudio(playerSteps, volume);
+        audioDictionary = new Dictionary<string, AudioClip>();
+
+        foreach (var clip in audioClips)
+        {
+            audioDictionary[clip.name] = clip;
+        }
     }
 
-    public void PlayerSprintSteps(float volume)
+    public void PlaySound(string soundName, float volume = 1f, float pith = 1f)
     {
-        audioSource.pitch = 2f;
-        PlayAudio(playerSteps, volume);
-    }
-
-    public void DeathRobot(float volume)
-    {
-        PlayAudio(deathRobot, volume);
-    }
-
-    public void AmmoTake(float volume)
-    {
-        PlayAudio(ammoTake, volume);
-    }
-
-    public void ZoomOn(float volume)
-    {
-        PlayAudio(zoomOn, volume);
-    }
-
-    public void ZoomOff(float volume)
-    {
-        PlayAudio(zoomOff, volume);
-    }
-
-
-    void PlayAudio(AudioClip clip, float volume)
-    {
-        audioSource.PlayOneShot(clip, volume);
+        if (audioDictionary.TryGetValue(soundName, out AudioClip clip))
+        {
+            audioSource.pitch = pith;
+            audioSource.PlayOneShot(clip, volume);
+        }
+        else
+        {
+            Debug.LogError("AudioClip not found!");
+        }
     }
 
 }
