@@ -14,6 +14,7 @@ namespace StarterAssets
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 4.0f;
+        public bool isMove = false;
         public float MoveSpeedOnZoom = 1f;
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 6.0f;
@@ -210,6 +211,8 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            //bool to play audio source "steps"
+            isMove = _controller.velocity.magnitude > 0.1f;
         }
 
         private void JumpAndGravity()

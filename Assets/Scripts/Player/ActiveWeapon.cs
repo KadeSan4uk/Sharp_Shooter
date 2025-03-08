@@ -138,7 +138,7 @@ public class ActiveWeapon : MonoBehaviour
     {
         if (weapon.IsSniperRifle)
         {
-            audioManager.PlaySound("SniperRifleShoot", 0.5f);
+            audioManager.PlaySound("SniperRifleShoot", 0.8f);
         }
         else if (weapon.IsMashineGun)
         {

@@ -22,6 +22,7 @@ namespace StarterAssets
         public bool cursorLocked = true;
         public bool cursorInputForLook = true;
 
+
         private void Start()
         {
             SetCursorState(true);
