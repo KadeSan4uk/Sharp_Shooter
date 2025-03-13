@@ -5,12 +5,14 @@ using System.Collections;
 public class PlayerStepsAudio : MonoBehaviour
 {
     public FirstPersonController firstPersonController;
+
     public AudioSource steps;
 
     public bool isMoving;
     public bool isSprinting;
     public const float sprintThresholdMultiplier = 0.9f;
     public Coroutine stepCoroutine;
+    public PlayerHealth playerHealth;
 
     private void Update()
     {
@@ -22,7 +24,7 @@ public class PlayerStepsAudio : MonoBehaviour
         isMoving = firstPersonController.MagnitudeMoveSpeed > 0.1f;
         isSprinting = firstPersonController.MagnitudeMoveSpeed > firstPersonController.SprintSpeed * sprintThresholdMultiplier;
 
-        if (isMoving && firstPersonController.Grounded)
+        if (isMoving && firstPersonController.Grounded && playerHealth.isALive)
         {
             if (stepCoroutine == null)
                 stepCoroutine = StartCoroutine(PlaySteps());
@@ -35,7 +37,7 @@ public class PlayerStepsAudio : MonoBehaviour
 
     private IEnumerator PlaySteps()
     {
-        while (isMoving && firstPersonController.Grounded)
+        while (isMoving && firstPersonController.Grounded && playerHealth.isALive)
         {
             steps.pitch = isSprinting ? 1.5f : 1f;
             steps.Play();
@@ -47,7 +49,7 @@ public class PlayerStepsAudio : MonoBehaviour
         stepCoroutine = null;
     }
 
-    private void StopSteps()
+    public void StopSteps()
     {
         if (stepCoroutine != null)
         {

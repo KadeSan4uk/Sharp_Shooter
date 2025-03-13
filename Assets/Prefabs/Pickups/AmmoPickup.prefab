@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7361129146849223937}
   - component: {fileID: 4549698591473387623}
-  - component: {fileID: 2521009438126245129}
+  - component: {fileID: 6156110641053900128}
   m_Layer: 0
   m_Name: AmmoPickup
   m_TagString: Untagged
@@ -176,7 +176,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.35, z: 0}
---- !u!114 &2521009438126245129
+--- !u!114 &6156110641053900128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

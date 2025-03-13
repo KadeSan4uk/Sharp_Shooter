@@ -11,9 +11,9 @@ public class AmmoPickup : Pickup
         audioManager = FindFirstObjectByType<AudioManager>();
     }
 
-    protected override void OnPickup(ActiveWeapon activeWeapon)
+    protected override void OnAmmoPickup(ActiveWeapon activeWeapon)
     {
         activeWeapon.AdjustAmmo(ammoAmount);
         audioManager.PlaySound("ammoTake");
-    }
+    }   
 }

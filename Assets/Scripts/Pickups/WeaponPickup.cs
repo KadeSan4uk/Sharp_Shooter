@@ -5,8 +5,8 @@ public  class WeaponPickup : Pickup
     [SerializeField] WeaponSO weaponSO;
          
 
-    protected override void OnPickup(ActiveWeapon activeWeapon)
+    protected override void OnAmmoPickup(ActiveWeapon activeWeapon)
     {
         activeWeapon.SwitchWeapon(weaponSO);
-    }
+    }   
 }

@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
@@ -16,9 +18,10 @@ public abstract class Pickup : MonoBehaviour
         if (other.CompareTag(PLAYER_STRING))
         {
             ActiveWeapon activeWeapon = other.GetComponentInChildren<ActiveWeapon>();
-            OnPickup(activeWeapon);
+            OnAmmoPickup(activeWeapon);
             Destroy(this.gameObject);
         }
     }
-    protected abstract void OnPickup(ActiveWeapon activeWeapon);
+
+    protected abstract void OnAmmoPickup(ActiveWeapon activeWeapon);
 }

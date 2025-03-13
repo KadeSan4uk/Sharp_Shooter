@@ -25,14 +25,8 @@ namespace TMPro.Examples
 
         //private int m_frame = 0;
 
-        static WaitForEndOfFrame k_WaitForEndOfFrame = new WaitForEndOfFrame();
-        static WaitForSeconds[] k_WaitForSecondsRandom = new WaitForSeconds[]
-        {
-            new WaitForSeconds(0.05f), new WaitForSeconds(0.1f), new WaitForSeconds(0.15f), new WaitForSeconds(0.2f), new WaitForSeconds(0.25f),
-            new WaitForSeconds(0.3f), new WaitForSeconds(0.35f), new WaitForSeconds(0.4f), new WaitForSeconds(0.45f), new WaitForSeconds(0.5f),
-            new WaitForSeconds(0.55f), new WaitForSeconds(0.6f), new WaitForSeconds(0.65f), new WaitForSeconds(0.7f), new WaitForSeconds(0.75f),
-            new WaitForSeconds(0.8f), new WaitForSeconds(0.85f), new WaitForSeconds(0.9f), new WaitForSeconds(0.95f), new WaitForSeconds(1.0f),
-        };
+        private WaitForEndOfFrame k_WaitForEndOfFrame;
+        private WaitForSeconds[] k_WaitForSecondsRandom;
 
         void Awake()
         {
@@ -44,6 +38,16 @@ namespace TMPro.Examples
             //m_floatingText_Transform.position = m_transform.position + new Vector3(0, 15f, 0);
 
             m_cameraTransform = Camera.main.transform;
+
+            k_WaitForEndOfFrame = new WaitForEndOfFrame();
+            k_WaitForSecondsRandom = new WaitForSeconds[]
+            {
+                new WaitForSeconds(0.05f), new WaitForSeconds(0.1f), new WaitForSeconds(0.15f), new WaitForSeconds(0.2f), new WaitForSeconds(0.25f),
+            new WaitForSeconds(0.3f), new WaitForSeconds(0.35f), new WaitForSeconds(0.4f), new WaitForSeconds(0.45f), new WaitForSeconds(0.5f),
+            new WaitForSeconds(0.55f), new WaitForSeconds(0.6f), new WaitForSeconds(0.65f), new WaitForSeconds(0.7f), new WaitForSeconds(0.75f),
+            new WaitForSeconds(0.8f), new WaitForSeconds(0.85f), new WaitForSeconds(0.9f), new WaitForSeconds(0.95f), new WaitForSeconds(1.0f),
+        }
+            ;
         }
 
         void Start()
@@ -61,7 +65,7 @@ namespace TMPro.Examples
                 //m_textMeshPro.fontSharedMaterial = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(Material)) as Material;
 
                 m_textMeshPro.alignment = TextAlignmentOptions.Center;
-                m_textMeshPro.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
+                m_textMeshPro.color = new Color32((byte) Random.Range(0, 255), (byte) Random.Range(0, 255), (byte) Random.Range(0, 255), 255);
                 m_textMeshPro.fontSize = 24;
                 //m_textMeshPro.enableExtraPadding = true;
                 //m_textMeshPro.enableShadows = false;
@@ -81,7 +85,7 @@ namespace TMPro.Examples
                 m_textMesh = m_floatingText.AddComponent<TextMesh>();
                 m_textMesh.font = Resources.Load<Font>("Fonts/ARIAL");
                 m_textMesh.GetComponent<Renderer>().sharedMaterial = m_textMesh.font.material;
-                m_textMesh.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
+                m_textMesh.color = new Color32((byte) Random.Range(0, 255), (byte) Random.Range(0, 255), (byte) Random.Range(0, 255), 255);
                 m_textMesh.anchor = TextAnchor.LowerCenter;
                 m_textMesh.fontSize = 24;
 
@@ -134,11 +138,11 @@ namespace TMPro.Examples
                     alpha = Mathf.Clamp(alpha - (Time.deltaTime / fadeDuration) * 255, 0, 255);
                 }
 
-                int_counter = (int)current_Count;
+                int_counter = (int) current_Count;
                 m_textMeshPro.text = int_counter.ToString();
                 //m_textMeshPro.SetText("{0}", (int)current_Count);
 
-                m_textMeshPro.color = new Color32(start_color.r, start_color.g, start_color.b, (byte)alpha);
+                m_textMeshPro.color = new Color32(start_color.r, start_color.g, start_color.b, (byte) alpha);
 
                 // Move the floating text upward each update
                 m_floatingText_Transform.position += new Vector3(0, starting_Count * Time.deltaTime, 0);
@@ -189,11 +193,11 @@ namespace TMPro.Examples
                     alpha = Mathf.Clamp(alpha - (Time.deltaTime / fadeDuration) * 255, 0, 255);
                 }
 
-                int_counter = (int)current_Count;
+                int_counter = (int) current_Count;
                 m_textMesh.text = int_counter.ToString();
                 //Debug.Log("Current Count:" + current_Count.ToString("f2"));
 
-                m_textMesh.color = new Color32(start_color.r, start_color.g, start_color.b, (byte)alpha);
+                m_textMesh.color = new Color32(start_color.r, start_color.g, start_color.b, (byte) alpha);
 
                 // Move the floating text upward each update
                 m_floatingText_Transform.position += new Vector3(0, starting_Count * Time.deltaTime, 0);

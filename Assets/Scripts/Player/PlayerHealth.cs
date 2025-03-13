@@ -13,13 +13,17 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Image[] shieldBars;
     [SerializeField] GameObject gameOverContainer;
 
+
     int currentHealth;
     int gameOverVirtualCameraPriority = 20;
+
+    public bool isALive;
 
     private void Awake()
     {
         currentHealth = health;
         AdjustShieldUI();
+        isALive = true;
     }
 
     public void TakeDamage(int damage)
@@ -30,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            isALive = false;
             PlayerGameOver();
         }
     }
@@ -57,5 +62,16 @@ public class PlayerHealth : MonoBehaviour
                 shieldBars[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void AdjustShieldPickup(int amount)
+    {
+        currentHealth += amount;
+
+        if (currentHealth >= amount)
+        {
+            currentHealth = health;
+        }
+        AdjustShieldUI();
     }
 }

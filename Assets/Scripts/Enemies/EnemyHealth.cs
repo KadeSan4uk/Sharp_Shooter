@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     int currentHealth;
 
     GameManager gameManager;
-    AudioManager audioManager;
+    AudioManager audioManager;    
 
     private void Awake()
     {
