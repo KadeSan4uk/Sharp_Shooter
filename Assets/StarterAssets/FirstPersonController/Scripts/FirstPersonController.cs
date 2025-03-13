@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 #endif
 
 namespace StarterAssets
@@ -13,11 +14,11 @@ namespace StarterAssets
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
-        public float MoveSpeed = 4.0f;
-        public bool isMove = false;
+        public float MoveSpeed = 10.0f;
+        public float MagnitudeMoveSpeed;
         public float MoveSpeedOnZoom = 1f;
         [Tooltip("Sprint speed of the character in m/s")]
-        public float SprintSpeed = 6.0f;
+        public float SprintSpeed = 16.0f;
         public float SprintSpeedOnZoom = 1f;
         [Tooltip("Rotation speed of the character")]
         public float RotationSpeed = 1.0f;
@@ -212,7 +213,7 @@ namespace StarterAssets
             // move the player
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
             //bool to play audio source "steps"
-            isMove = _controller.velocity.magnitude > 0.1f;
+            MagnitudeMoveSpeed = _controller.velocity.magnitude;
         }
 
         private void JumpAndGravity()
