@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isALive;
 
+    public GameManager gameManager;
+
     private void Awake()
     {
         currentHealth = health;
@@ -32,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
         AdjustShieldUI();
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && gameManager.enemiesLeft > 0)
         {
             isALive = false;
             PlayerGameOver();

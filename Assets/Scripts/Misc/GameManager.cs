@@ -1,5 +1,6 @@
+using Cinemachine;
+using StarterAssets;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,15 +8,24 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TMP_Text enemiesLeftText;
-    [SerializeField] GameObject youWinText;
+    [SerializeField] GameObject youWinTextContainer;
     [SerializeField] GameObject enemiesTextContainer;
     [SerializeField] TMP_Text[] enemiesKilledText;
+    [SerializeField] Transform weaponCamera;
+    [SerializeField] CinemachineVirtualCamera deathVirtualCamera;
 
-    int enemiesLeft = 0;
+    int gameOverVirtualCameraPriority = 20;
+
+
+    public int enemiesLeft = 0;
     int enemiesKilled = 0;
 
     const string ENEMIES_LEFT_STRING = "Enemies left: ";
     const string ENEMIRS_KILLED = "Enemies killed: ";
+
+    public bool isAWinUI = false;
+
+    public PlayerHealth playerHealth;
 
     public void AdjustEnemiesLeft(int amount)
     {
@@ -24,8 +34,8 @@ public class GameManager : MonoBehaviour
 
         if (enemiesLeft <= 0)
         {
-            youWinText.SetActive(true);
-            enemiesTextContainer.SetActive(false);
+            isAWinUI = true;
+            YouWinUI();
         }
     }
 
@@ -48,5 +58,17 @@ public class GameManager : MonoBehaviour
     {
         Debug.LogWarning("Does not work in the Unity Editor!");
         Application.Quit();
+    }
+
+    void YouWinUI()
+    {
+        playerHealth.isALive = false;
+        weaponCamera.parent = null;
+        deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
+        youWinTextContainer.SetActive(true);
+        enemiesTextContainer.SetActive(false);
+        StarterAssetsInputs starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
+        starterAssetsInputs.SetCursorState(false);
+        Destroy(playerHealth.gameObject);
     }
 }
