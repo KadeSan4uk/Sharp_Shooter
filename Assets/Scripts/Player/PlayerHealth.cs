@@ -19,8 +19,10 @@ public class PlayerHealth : MonoBehaviour
     int gameOverVirtualCameraPriority = 20;
 
     public bool isALive;
+    public bool isTakeDamage = false;
 
     public GameManager gameManager;
+    public AudioManager audioManager;
 
     private void Awake()
     {
@@ -32,7 +34,9 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        isTakeDamage = true;
 
+        PlaySoundTakeDamage();
         LowHPImageDraw();
         AdjustShieldUI();
 
@@ -40,6 +44,21 @@ public class PlayerHealth : MonoBehaviour
         {
             isALive = false;
             PlayerGameOver();
+            PlaySoundTakeDamage();
+        }
+        isTakeDamage = false;
+    }
+
+    void PlaySoundTakeDamage()
+    {
+        if (isTakeDamage && isALive)
+        {
+            audioManager.PlaySound("PlayerTakeDamage", 4f);
+        }
+
+        if (!isALive)
+        {
+            audioManager.PlaySound("PlayerDeath", 2f);
         }
     }
 
@@ -47,6 +66,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 3 && isALive)
         {
+            audioManager.PlaySound("heartbeatShort");
+
             lowHPImage.SetActive(true);
         }
         else
