@@ -45,15 +45,9 @@ public class PlayerHealth : MonoBehaviour
 
     void LowHPImageDraw()
     {
-        Debug.Log("I am LowHPImage");
         if (currentHealth <= 3 && isALive)
         {
-            Debug.Log("If on worcking!");
             lowHPImage.SetActive(true);
-        }
-        else if (currentHealth >= 4 && isALive)
-        {
-            lowHPImage.SetActive(false);
         }
         else
         {
