@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [Range(1, 10)]
-    [SerializeField] int health = 5;
+    [SerializeField] int health = 10;
     [SerializeField] CinemachineVirtualCamera deathVirtualCamera;
     [SerializeField] Transform weaponCamera;
     [SerializeField] Image[] shieldBars;
@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = health;
+        currentHealth = 5;
         AdjustShieldUI();
         isALive = true;
     }
