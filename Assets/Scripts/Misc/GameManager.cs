@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public bool isAWinUI = false;
 
     public PlayerHealth playerHealth;
+    public GameObject lowHPImage;
 
     public void AdjustEnemiesLeft(int amount)
     {
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
         deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
         youWinTextContainer.SetActive(true);
         enemiesTextContainer.SetActive(false);
+        lowHPImage.SetActive(false);
         StarterAssetsInputs starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
         starterAssetsInputs.SetCursorState(false);
         Destroy(playerHealth.gameObject);

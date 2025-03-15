@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Transform weaponCamera;
     [SerializeField] Image[] shieldBars;
     [SerializeField] GameObject gameOverContainer;
+    [SerializeField] GameObject lowHPImage;
 
 
     int currentHealth;
@@ -32,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
+        LowHPImageDraw();
         AdjustShieldUI();
 
         if (currentHealth <= 0 && gameManager.enemiesLeft > 0)
@@ -41,11 +43,30 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    void LowHPImageDraw()
+    {
+        Debug.Log("I am LowHPImage");
+        if (currentHealth <= 3 && isALive)
+        {
+            Debug.Log("If on worcking!");
+            lowHPImage.SetActive(true);
+        }
+        else if (currentHealth >= 4 && isALive)
+        {
+            lowHPImage.SetActive(false);
+        }
+        else
+        {
+            lowHPImage.SetActive(false);
+        }
+    }
+
     void PlayerGameOver()
     {
         weaponCamera.parent = null;
         deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
         gameOverContainer.SetActive(true);
+        lowHPImage.SetActive(false);
         StarterAssetsInputs starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
         starterAssetsInputs.SetCursorState(false);
         Destroy(this.gameObject);
@@ -75,5 +96,6 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = health;
         }
         AdjustShieldUI();
+        LowHPImageDraw();
     }
 }
