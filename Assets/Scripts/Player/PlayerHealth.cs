@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] GameObject lowHPImage;
 
 
-    int currentHealth;
+    public int currentHealth;
     int gameOverVirtualCameraPriority = 20;
 
     public bool isALive;
@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
 
     public GameManager gameManager;
     public AudioManager audioManager;
+    public HeartBeats heartBeats;
 
     private void Awake()
     {
@@ -66,12 +67,12 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 3 && isALive)
         {
-            audioManager.PlaySound("heartbeatShort");
-
+            heartBeats.PlaySound();
             lowHPImage.SetActive(true);
         }
         else
         {
+            heartBeats.StopPlay();
             lowHPImage.SetActive(false);
         }
     }
