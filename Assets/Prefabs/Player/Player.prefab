@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 7831128551079494726}
   - component: {fileID: 9124874561291787638}
   - component: {fileID: 6911791276950377284}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,6 +304,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameOverContainer: {fileID: 0}
+  lowHPImage: {fileID: 0}
+  currentHealth: 0
+  isALive: 0
+  isTakeDamage: 0
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
+  heartBeats: {fileID: 0}
 --- !u!143 &8066446928307628031
 CharacterController:
   m_ObjectHideFlags: 0
@@ -341,8 +348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
-  SprintSpeed: 12
+  MoveSpeed: 10
+  MagnitudeMoveSpeed: 0
+  MoveSpeedOnZoom: 5
+  SprintSpeed: 16
+  SprintSpeedOnZoom: 8
   RotationSpeed: 2
   SpeedChangeRate: 10
   JumpHeight: 1.5
@@ -543,7 +553,9 @@ MonoBehaviour:
   playerFollowCamera: {fileID: 0}
   weaponCamera: {fileID: 2654870009880380170}
   zoomVignette: {fileID: 0}
+  crosshair: {fileID: 0}
   ammoText: {fileID: 0}
+  menuSettings: {fileID: 0}
 --- !u!95 &212227069126515345
 Animator:
   serializedVersion: 7

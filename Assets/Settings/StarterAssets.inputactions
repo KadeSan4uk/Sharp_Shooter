@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "cec9c99a-2621-45b0-b2a8-caa0f9eaebea",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -280,32 +289,15 @@
                     "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "UI",
-            "id": "4663917d-5332-4532-bd6d-7a3d01126d2c",
-            "actions": [
-                {
-                    "name": "Point",
-                    "type": "Button",
-                    "id": "2cc7caba-0496-4127-b5e3-e4de3f61618a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "83ca156e-5e7d-4695-b5c5-0d9ecf951bdf",
-                    "path": "<Mouse>/leftButton",
+                    "id": "0f540760-4a2c-48a7-830d-a96e275def0c",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Point",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

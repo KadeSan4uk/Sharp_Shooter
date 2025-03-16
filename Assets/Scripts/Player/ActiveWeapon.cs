@@ -14,12 +14,15 @@ public class ActiveWeapon : MonoBehaviour
     [SerializeField] GameObject crosshair;
     [SerializeField] TMP_Text ammoText;
 
+    public MenuSettings menuSettings;
+
     WeaponSO currentWeaponSO;
     StarterAssetsInputs starterAssetsInputs;
     FirstPersonController firstPersonController;
     Weapon currentWeapon;
     Animator animator;
     AudioManager audioManager;
+    
 
 
     const string SHOOT_STRING_PISTOL = "Pistol";
@@ -102,7 +105,7 @@ public class ActiveWeapon : MonoBehaviour
 
         if (!starterAssetsInputs.shoot) return;
 
-        if (timeSinceLastShot >= currentWeaponSO.FireRate && currentAmmo > 0)
+        if (timeSinceLastShot >= currentWeaponSO.FireRate && currentAmmo > 0 && !menuSettings.isPaused)
         {
             currentWeapon.Shoot(currentWeaponSO, isSniperRifle);
             SwitchAnimationWeapon(currentWeaponSO);
@@ -160,7 +163,7 @@ public class ActiveWeapon : MonoBehaviour
     void HandleZoom()
     {
         if (!currentWeaponSO.CanZoom) return;
-        if (starterAssetsInputs.zoom)
+        if (starterAssetsInputs.zoom && !menuSettings.isPaused)
         {
             crosshair.SetActive(false);
 
