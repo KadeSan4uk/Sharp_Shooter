@@ -353,7 +353,7 @@ MonoBehaviour:
   MoveSpeedOnZoom: 5
   SprintSpeed: 16
   SprintSpeedOnZoom: 8
-  RotationSpeed: 2
+  RotationSpeed: 0.5
   SpeedChangeRate: 10
   JumpHeight: 1.5
   Gravity: -25
@@ -556,6 +556,7 @@ MonoBehaviour:
   crosshair: {fileID: 0}
   ammoText: {fileID: 0}
   menuSettings: {fileID: 0}
+  zoomRatationSpeed: 0
 --- !u!95 &212227069126515345
 Animator:
   serializedVersion: 7

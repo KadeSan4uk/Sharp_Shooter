@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using StarterAssets;
+using TMPro;
 
 public class MenuSettings : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class MenuSettings : MonoBehaviour
         starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
         pauseAction.action.performed += TogglePause;
     }
+
     private void OnDestroy()
     {
         pauseAction.action.performed -= TogglePause;
@@ -67,9 +69,6 @@ public class MenuSettings : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(SetVolume);
         sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
         firstPersonController.RotationSpeed = defaultSensitivity;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
     }
 
     public void TogglePause(InputAction.CallbackContext context)
@@ -84,6 +83,8 @@ public class MenuSettings : MonoBehaviour
         crosshair.SetActive(false);
         popupOptions.SetActive(false);
         PauseGame();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void OpenOptions()

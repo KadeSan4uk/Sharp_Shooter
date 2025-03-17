@@ -23,10 +23,10 @@ namespace StarterAssets
         public bool cursorInputForLook = true;
 
 
-        private void Start()
-        {
-            SetCursorState(false);
-        }
+        //private void Start()
+        //{
+        //    SetCursorState(false);
+        //}
 
 #if ENABLE_INPUT_SYSTEM
         public void OnMove(InputValue value)
@@ -94,15 +94,15 @@ namespace StarterAssets
             zoom = newZoomState;
         }
 
-        private void OnApplicationFocus(bool hasFocus)
-        {
-            SetCursorState(cursorLocked);
-        }
+        //private void OnApplicationFocus(bool hasFocus)
+        //{
+        //    SetCursorState(cursorLocked);
+        //}
 
-        public void SetCursorState(bool newState)
-        {
-            Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
-        }
+        //public void SetCursorState(bool newState)
+        //{
+        //    Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+        //}
     }
 
 }
