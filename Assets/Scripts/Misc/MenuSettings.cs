@@ -36,7 +36,6 @@ public class MenuSettings : MonoBehaviour
 
     private void Start()
     {
-        OpenMainMenu();
         CheckPlayerPrefs();
     }
 
@@ -68,6 +67,9 @@ public class MenuSettings : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(SetVolume);
         sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
         firstPersonController.RotationSpeed = defaultSensitivity;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
     }
 
     public void TogglePause(InputAction.CallbackContext context)
@@ -117,7 +119,6 @@ public class MenuSettings : MonoBehaviour
         starterAssetsInputs.move = Vector2.zero;
         starterAssetsInputs.look = Vector2.zero;
         starterAssetsInputs.cursorInputForLook = false;
-        starterAssetsInputs.cursorLocked = false;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -134,7 +135,6 @@ public class MenuSettings : MonoBehaviour
         starterAssetsInputs.move = Vector2.zero;
         starterAssetsInputs.look = Vector2.zero;
         starterAssetsInputs.cursorInputForLook = true;
-        starterAssetsInputs.cursorLocked = true;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

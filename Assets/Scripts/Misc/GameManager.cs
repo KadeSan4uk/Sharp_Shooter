@@ -68,9 +68,9 @@ public class GameManager : MonoBehaviour
         deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
         youWinTextContainer.SetActive(true);
         enemiesTextContainer.SetActive(false);
-        lowHPImage.SetActive(false);
-        StarterAssetsInputs starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
-        starterAssetsInputs.SetCursorState(false);
+        lowHPImage.SetActive(false);       
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Destroy(playerHealth.gameObject);
     }
 }
