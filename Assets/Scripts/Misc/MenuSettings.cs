@@ -20,16 +20,18 @@ public class MenuSettings : MonoBehaviour
 
     private StarterAssetsInputs starterAssetsInputs;
 
+    public float defaultSensitivity;
+
     public bool isPaused = false;
 
     private void Awake()
     {
         starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
-        pauseAction.action.performed += _ => TogglePause();
+        pauseAction.action.performed += TogglePause;
     }
     private void OnDestroy()
     {
-        pauseAction.action.performed -= _ => TogglePause();
+        pauseAction.action.performed -= TogglePause;
     }
 
     private void Start()
@@ -64,9 +66,10 @@ public class MenuSettings : MonoBehaviour
 
         volumeSlider.onValueChanged.AddListener(SetVolume);
         sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
+        firstPersonController.RotationSpeed = defaultSensitivity;
     }
 
-    public void TogglePause()
+    public void TogglePause(InputAction.CallbackContext context)
     {
         if (isPaused) ResumeGame();
         else OpenMainMenu();
@@ -147,6 +150,7 @@ public class MenuSettings : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Sensitivity", value);
         firstPersonController.RotationSpeed = value;
+        defaultSensitivity = value;
         PlayerPrefs.Save();
     }
 }

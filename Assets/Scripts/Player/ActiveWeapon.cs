@@ -22,7 +22,7 @@ public class ActiveWeapon : MonoBehaviour
     Weapon currentWeapon;
     Animator animator;
     AudioManager audioManager;
-    
+
 
 
     const string SHOOT_STRING_PISTOL = "Pistol";
