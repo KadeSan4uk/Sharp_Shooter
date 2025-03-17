@@ -163,6 +163,7 @@ public class ActiveWeapon : MonoBehaviour
     void HandleZoom()
     {
         if (!currentWeaponSO.CanZoom) return;
+
         if (starterAssetsInputs.zoom && !menuSettings.isPaused)
         {
             crosshair.SetActive(false);
@@ -178,7 +179,10 @@ public class ActiveWeapon : MonoBehaviour
         }
         else
         {
-            crosshair.SetActive(true);
+            if (!menuSettings.isPaused)
+            {
+                crosshair.SetActive(true);
+            }
 
             playerFollowCamera.m_Lens.FieldOfView = defaultFOV;
             weaponCamera.fieldOfView = defaultFOV;

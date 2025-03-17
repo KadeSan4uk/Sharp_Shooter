@@ -16,6 +16,7 @@ public class MenuSettings : MonoBehaviour
 
     [Header("Input")]
     public InputActionReference pauseAction;
+    public FirstPersonController firstPersonController;
 
     private StarterAssetsInputs starterAssetsInputs;
 
@@ -145,6 +146,7 @@ public class MenuSettings : MonoBehaviour
     public void SetSensitivity(float value)
     {
         PlayerPrefs.SetFloat("Sensitivity", value);
+        firstPersonController.RotationSpeed = value;
         PlayerPrefs.Save();
     }
 }
