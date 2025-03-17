@@ -61,6 +61,7 @@ public class MenuSettings : MonoBehaviour
 
         volumeSlider.value = savedVolume;
         sensitivitySlider.value = savedSensitivity;
+        SetSensitivity(savedSensitivity);
 
         AudioListener.volume = savedVolume;
 

@@ -29,10 +29,9 @@ public class ActiveWeapon : MonoBehaviour
     const string SHOOT_STRING_MASHINE_GUN = "MachineGun";
     const string SHOOT_STRING_SNIPER_RIFLE = "SniperRifle";
 
-
+    public float zoomRatationSpeed;
     float timeSinceLastShot = 0f;
     float defaultFOV;
-    float defaultRotationSpeed;
     int currentAmmo;
     bool isSniperRifle;
     bool wasZoomed = false;
@@ -45,7 +44,6 @@ public class ActiveWeapon : MonoBehaviour
         firstPersonController = GetComponentInParent<FirstPersonController>();
         animator = GetComponent<Animator>();
         defaultFOV = playerFollowCamera.m_Lens.FieldOfView;
-        defaultRotationSpeed = firstPersonController.RotationSpeed;
     }
 
     private void Start()
@@ -62,6 +60,11 @@ public class ActiveWeapon : MonoBehaviour
         HandleShoot();
         HandleZoom();
         PlayZoomFX();
+    }
+
+    public void ZoomRotationSpeed()
+    {
+        zoomRatationSpeed = menuSettings.sensitivitySlider.value / 5;
     }
 
     public void AdjustAmmo(int amount)
@@ -83,7 +86,7 @@ public class ActiveWeapon : MonoBehaviour
 
             zoomVignette.SetActive(false);
             currentWeaponSO.OnZoom = false;
-            firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
+            firstPersonController.ChangeRotationSpeed(menuSettings.sensitivitySlider.value);
         }
 
         if (currentWeapon)
@@ -162,6 +165,8 @@ public class ActiveWeapon : MonoBehaviour
 
     void HandleZoom()
     {
+        ZoomRotationSpeed();
+
         if (!currentWeaponSO.CanZoom) return;
 
         if (starterAssetsInputs.zoom && !menuSettings.isPaused)
@@ -175,7 +180,7 @@ public class ActiveWeapon : MonoBehaviour
 
             zoomVignette.SetActive(true);
             currentWeaponSO.OnZoom = true;
-            firstPersonController.ChangeRotationSpeed(currentWeaponSO.ZoomRotationSpeed);
+            firstPersonController.ChangeRotationSpeed(zoomRatationSpeed);
         }
         else
         {
@@ -191,7 +196,7 @@ public class ActiveWeapon : MonoBehaviour
 
             zoomVignette.SetActive(false);
             currentWeaponSO.OnZoom = false;
-            firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
+            firstPersonController.ChangeRotationSpeed(menuSettings.sensitivitySlider.value);
         }
     }
 
